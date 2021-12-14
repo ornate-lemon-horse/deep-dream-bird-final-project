@@ -26,5 +26,14 @@ The "forward" training of the model on the bird dataset was unremarkable: a stan
 
 To generate the "dream" images, I started from a set of input images, only one of which was used for the outputs shown (more on that later). I used a `DataLoader` to supply these images to the dreaming process. For each iteration, the image was passed through the network and a prediction was made as to which class it belonged to. Then, the network was informed of the "correct" class (the class we wished to emulate), and a gradient was calculated. The model was frozen, so no updates were made to its layers. Instead, the gradient was propagated backwards all the way to the input image, where updates were made. Then, some intermediate processing was done on this generated image, which included clamping the pixel values and performing a small Gaussian blur, as well as a random horizontal flip. This process was then repeated many times.
 
-## Evaluation and Results
+The loss function that I used for this dreaming process was something that I worked on over the course of this project. Initially, I used the `CrossEntropyLoss` of the predicted and "correct" labels, but I later switched to directly taking the values of the neurons in the final connected layer, which will be discussed below.
 
+## Experiments and Results
+
+I explored how the model performed with and without various levels of training on the bird dataset. The number of neurons in the final layer was different (555 vs. 1000) compared to ImageNet, so the model initally had random weights in this final layer. As expected, the images generated did not resemble to training set: ![image of dream output prior to training on the bird model. There is no bird-like appearance. The output appears like wavy patterns.](new-loss-without-negate-before-training.png)
+
+### Aside on the output format
+
+Due to some issues with the training process, the methodology that eventually worked out results in very tiny changes to the image. The "raw" output from the network is shown on the left side, and the right side shows the output "rescaled" to the 0-255 range.
+
+Initially, I faced some challenges with getting this process to work at all.
