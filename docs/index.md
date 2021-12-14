@@ -36,4 +36,6 @@ I explored how the model performed with and without various levels of training o
 
 Due to some issues with the training process, the methodology that eventually worked out results in very tiny changes to the image. The "raw" output from the network is shown on the left side, and the right side shows the output "rescaled" to the 0-255 range.
 
-Initially, I faced some challenges with getting this process to work at all.
+Initially, I faced some challenges with getting this process to work at all. Even after one training epoch, the values of the output images would spiral off towards infinity. I tried some suggestions, like clamping the image to the [0,1] range after every pass, and a small amount of Gaussian blur. However, the actual problem was that the inital learning rate (`lr=0.01`) copied over from model training was too high. After reducing the learning rate several orders of mangnitude, experimentation could really begin.
+
+However, the output produced by this process was relatively unsatisfying. ![dream output after training with old loss function](old-loss-after-train.png)
