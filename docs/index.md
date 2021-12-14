@@ -30,7 +30,9 @@ The loss function that I used for this dreaming process was something that I wor
 
 ## Experiments and Results
 
-I explored how the model performed with and without various levels of training on the bird dataset. The number of neurons in the final layer was different (555 vs. 1000) compared to ImageNet, so the model initally had random weights in this final layer. As expected, the images generated did not resemble to training set: ![image of dream output prior to training on the bird model. There is no bird-like appearance. The output appears like wavy patterns.](new-loss-without-negate-before-training.png)
+I explored how the model performed with and without various levels of training on the bird dataset. The number of neurons in the final layer was different (555 vs. 1000) compared to ImageNet, so the model initally had random weights in this final layer. As expected, the images generated did not resemble the training set:
+
+![image of dream output prior to training on the bird model. There is no bird-like appearance. The output appears like wavy patterns.](new-loss-without-negate-before-training.png)
 
 ### Aside on the output format
 
@@ -39,3 +41,5 @@ Due to some issues with the training process, the methodology that eventually wo
 Initially, I faced some challenges with getting this process to work at all. Even after one training epoch, the values of the output images would spiral off towards infinity. I tried some suggestions, like clamping the image to the [0,1] range after every pass, and a small amount of Gaussian blur. However, the actual problem was that the inital learning rate (`lr=0.01`) copied over from model training was too high. After reducing the learning rate several orders of mangnitude, experimentation could really begin.
 
 However, the output produced by this process was relatively unsatisfying. ![dream output after training with old loss function](old-loss-after-train.png)
+
+I theorized at this stage that my choice of loss function might be playing a role. The `CrossEntropyLoss` formulation caused the network to try and make the generated image more like a target class, *but also less like all other classes!* This was not what I wanted; the optimal incentive would be to only care about the single class of interest and to not even consider the other classes.
