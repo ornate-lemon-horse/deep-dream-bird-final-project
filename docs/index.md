@@ -16,7 +16,7 @@ For this project, I posed the question of how deep dream behavior could be creat
 
 ## Related Work
 
-The training data that I used was the Bird Project classifer data from the computer vision class. I used the same model as I did then, a pre-trained Inception_v4 network from the `timm` library.
+The training data that I used was the Bird Project classifer data from the computer vision class, first resized to 128x128. I used the same model as I did then, a pre-trained Inception_v4 network from the `timm` library.
 
 Some inspiration for scoring the model was taken from a TensorFlow blog post on deep dreams: [https://www.tensorflow.org/tutorials/generative/deepdream](https://www.tensorflow.org/tutorials/generative/deepdream)
 
@@ -40,6 +40,12 @@ Due to some issues with the training process, the methodology that eventually wo
 
 Initially, I faced some challenges with getting this process to work at all. Even after one training epoch, the values of the output images would spiral off towards infinity. I tried some suggestions, like clamping the image to the [0,1] range after every pass, and a small amount of Gaussian blur. However, the actual problem was that the inital learning rate (`lr=0.01`) copied over from model training was too high. After reducing the learning rate several orders of mangnitude, experimentation could really begin.
 
-However, the output produced by this process was relatively unsatisfying. ![dream output after training with old loss function](old-loss-after-train.png)
+However, the output produced by this process was relatively unsatisfying.
 
-I theorized at this stage that my choice of loss function might be playing a role. The `CrossEntropyLoss` formulation caused the network to try and make the generated image more like a target class, *but also less like all other classes!* This was not what I wanted; the optimal incentive would be to only care about the single class of interest and to not even consider the other classes.
+![dream output after training with old loss function](old-loss-after-train.png)
+
+I theorized at this stage that my choice of loss function might be playing a role. The `CrossEntropyLoss` formulation caused the network to try and make the generated image more like a target class, *but also less like all other classes!* This was not what I wanted; the optimal incentive would be to only care about the single class of interest and to not even consider the other classes. Therefore, I changed the loss function to just be the negative of the activation of the neuron in the final layer corresponding to the desired class. This way, gradient descent would actually seek to increase that neuron's activation. Initally, this resulted in a different "feel" to the outputs, but no birds yet:
+
+![output from the model with new loss function after training](new-loss-with-negate-after-training.png)
+
+![another output from the model with new loss function after training](new-loss-with-negate-after-training-with-softmax.png)
