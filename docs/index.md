@@ -8,11 +8,11 @@
 
 ## Abstract
 
-In this project, I sought out to explore how the "deep dream phenomena" arose and its properties. In particular, I wanted to find out how to generate interesting dream images and how they would be affected by changes in the underlying model. I trained a model based on the bird classifier from CSE455 and used it to generate deep dream images under various parameters. The work shows that this model is capable of producing convincing images.
+In this project, I sought out to explore how the "deep dream phenomena" arose and its properties. In particular, I wanted to find out how to generate interesting dream images and how they would be affected by changes in the underlying model. I trained a model based on the bird classifier from CSE455 and used it to generate deep dream images under various parameters. The work shows that this model is capable of producing convincing images that bear resemblance to the training set. I determined how training time and dream time relate to different aspects of the visual output. I then explored whether freezing the model (except the fully connected layer) would create the same kind of imagery from the pre-trained features.
 
 ## Problem Statement
 
-For this project, I posed the question of how deep dream behavior could be created and how this behavior and the specific visuals generated would change with things like the progression of model training.
+For this project, I posed the question of how deep dream behavior could be created and how this behavior and the specific visuals generated would change with things like the progression of model training and training parameters. I also wanted to explore the visuals that could be generated through this process.
 
 ## Related Work
 
@@ -129,4 +129,11 @@ Trained for 20 epochs, 1000 dream steps:
 ![output from frozen model with 20 bird epochs, 1000 dream steps](9-fc-only-20-1000-epochs/3.png)
 ![output from frozen model with 20 bird epochs, 1000 dream steps](9-fc-only-20-1000-epochs/4.png)
 
-## In Conclusion
+## Further Work
+
+Due to time and scope constraints, not everything that could have been performed was covered. Some avenues for future exploration include:
+
+* Exploring the dream phenomena created from non-uniform initial images, such as gradients or highly blurred images
+* Creating a visualizer for combinations of number of training epochs and number of dream steps
+* Using a "better" or "worse" model architecture
+* Selecting intermediate neurons or layers for activation rather than the fully connected layer
