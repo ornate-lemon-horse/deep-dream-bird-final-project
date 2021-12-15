@@ -2,6 +2,10 @@
 
 ## Michael Shuen
 
+**Video Link:** [https://youtu.be/y9NAXnTmETo](https://youtu.be/y9NAXnTmETo)
+
+**Slides Link:** [Link](https://docs.google.com/presentation/d/e/2PACX-1vTfND-ol1-7Wh64Dvsin7vl2rxdnrr7XVyOfFmUAwJftXnefpcfqaHMztYjyWbSl-eA6eNK3ZyhvnLh/pub?start=false&loop=false&delayms=3000)
+
 ## Abstract
 
 In this project, I sought out to explore how the "deep dream phenomena" arose and its properties. In particular, I wanted to find out how to generate interesting dream images and how they would be affected by changes in the underlying model. I trained a model based on the bird classifier from CSE455 and used it to generate deep dream images under various parameters. The work shows that this model is capable of producing convincing images that bear resemblance to the training set. I determined how training time and dream time relate to different aspects of the visual output. I then explored whether freezing the model (except the fully connected layer) would create the same kind of imagery from the pre-trained features.
@@ -81,7 +85,7 @@ At 1000 epochs, the images got more abstract, as if the network was devoting les
 
 ### (Intentionally) Overfitting the Model
 
-Since it seemed there would be diminishing returns from just allowing the dream process to continue further, I began exploring what would happen if I trained the model on the bird training data more. From rereading my previous notes on the bird project, I determined that training for 20 epochs at `lr=0.01` should overfit the model. I wanted to explore how the dream output would be affected as a result. I ran the dreaming process for 500, 1000, and 2000 steps.
+Since it seemed there would be diminishing returns from just allowing the dream process to continue further, I began exploring what would happen if I trained the model on the bird training data more. From rereading my previous notes on the bird project, I determined that training for 20 epochs at `lr=0.01` should overfit the model. I wanted to explore how the dream output would be affected as a result. I ran the dreaming process for 500, 1000, and 2000 steps. Overfitting seemed to increase the noise and decrease the prominence of any bird shapes present.
 
 500 steps:
 
