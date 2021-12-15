@@ -32,7 +32,7 @@ The loss function that I used for this dreaming process was something that I wor
 
 I explored how the model performed with and without various levels of training on the bird dataset. The number of neurons in the final layer was different (555 vs. 1000) compared to ImageNet, so the model initally had random weights in this final layer. As expected, the images generated did not resemble the training set:
 
-![image of dream output prior to training on the bird model. There is no bird-like appearance. The output appears like wavy patterns.](new-loss-without-negate-before-training.png)
+![image of dream output prior to training on the bird model. There is no bird-like appearance. The output appears like wavy patterns.](0-prelims/new-loss-without-negate-before-training.png)
 
 ### Aside on the output format
 
@@ -42,10 +42,16 @@ Initially, I faced some challenges with getting this process to work at all. Eve
 
 However, the output produced by this process was relatively unsatisfying.
 
-![dream output after training with old loss function](old-loss-after-train.png)
+![dream output after training with old loss function](0-prelims/old-loss-after-train.png)
 
 I theorized at this stage that my choice of loss function might be playing a role. The `CrossEntropyLoss` formulation caused the network to try and make the generated image more like a target class, *but also less like all other classes!* This was not what I wanted; the optimal incentive would be to only care about the single class of interest and to not even consider the other classes. Therefore, I changed the loss function to just be the negative of the activation of the neuron in the final layer corresponding to the desired class. This way, gradient descent would actually seek to increase that neuron's activation. Initally, this resulted in a different "feel" to the outputs, but no birds yet:
 
-![output from the model with new loss function after training](new-loss-with-negate-after-training.png)
+![output from the model with new loss function after training](0-prelims/new-loss-with-negate-after-training.png)
+![another output from the model with new loss function after training](0-prelims/new-loss-with-negate-after-training-with-softmax.png)
 
-![another output from the model with new loss function after training](new-loss-with-negate-after-training-with-softmax.png)
+After increasing the learning rate significantly, though, there were promising signs:
+
+![output from model after lr increase 1](1-initial-success/1.png)
+![output from model after lr increase 2](1-initial-success/2.png)
+![output from model after lr increase 3](1-initial-success/3.png)
+![output from model after lr increase 4](1-initial-success/4.png)
