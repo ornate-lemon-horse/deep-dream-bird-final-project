@@ -28,6 +28,8 @@ To generate the "dream" images, I started from a set of input images, only one o
 
 The loss function that I used for this dreaming process was something that I worked on over the course of this project. Initially, I used the `CrossEntropyLoss` of the predicted and "correct" labels, but I later switched to directly taking the values of the neurons in the final connected layer, which will be discussed below.
 
+The input image that I used for the results discussed here was an 128x128 image of RGB values `(128,128,128)`. I also attempted to use a color gradient image, but no visible changes were ever made to this image. This was because the magnitude of the changes was incredibly small, and the naive range expansion method I used to make the output visible could not handle this.
+
 ## Experiments and Results
 
 I explored how the model performed with and without various levels of training on the bird dataset. The number of neurons in the final layer was different (555 vs. 1000) compared to ImageNet, so the model initally had random weights in this final layer. As expected, the images generated did not resemble the training set:
