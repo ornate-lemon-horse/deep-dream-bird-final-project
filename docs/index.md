@@ -74,3 +74,34 @@ On the other hand, increasing the number of passes through the dreaming process 
 ![output from model with 500 dream steps](3-500-epochs/2.png)
 ![output from model with 500 dream steps](3-500-epochs/3.png)
 ![output from model with 500 dream steps](3-500-epochs/4.png)
+
+At 1000 epochs, the images got more abstract, as if the network was devoting less effort to the birds and more effort to other patterns it deemed interesting.
+
+![output from model with 1000 dream steps](4-1000-epochs/1.png)
+![output from model with 1000 dream steps](4-1000-epochs/2.png)
+![output from model with 1000 dream steps](4-1000-epochs/3.png)
+
+### (Intentionally) Overfitting the Model
+
+Since it seemed there would be diminishing returns from just allowing the dream process to continue further, I began exploring what would happen if I trained the model on the bird training data more. From rereading my previous notes on the bird project, I determined that training for 20 epochs at `lr=0.01` should overfit the model. I wanted to explore how the dream output would be affected as a result. I ran the dreaming process for 500, 1000, and 2000 steps.
+
+500 steps:
+
+![output from overfitted model with 500 dream steps](5-overfit-500-epochs/1.png)
+![output from overfitted model with 500 dream steps](5-overfit-500-epochs/2.png)
+![output from overfitted model with 500 dream steps](5-overfit-500-epochs/3.png)
+![output from overfitted model with 500 dream steps](5-overfit-500-epochs/4.png)
+![output from overfitted model with 500 dream steps](5-overfit-500-epochs/5.png)
+
+1000 steps:
+
+![output from overfitted model with 1000 dream steps](6-overfit-1000-epochs/1.png)
+![output from overfitted model with 1000 dream steps](6-overfit-1000-epochs/2.png)
+![output from overfitted model with 1000 dream steps](6-overfit-1000-epochs/3.png)
+![output from overfitted model with 1000 dream steps](6-overfit-1000-epochs/4.png)
+![output from overfitted model with 1000 dream steps](6-overfit-1000-epochs/5.png)
+
+2000 steps:
+
+![output from overfitted model with 2000 dream steps](7-overfit-2000-epochs/1.png)
+![output from overfitted model with 2000 dream steps](7-overfit-2000-epochs/2.png)
