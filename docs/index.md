@@ -109,6 +109,18 @@ Since it seemed there would be diminishing returns from just allowing the dream 
 ![output from overfitted model with 2000 dream steps](7-overfit-2000-epochs/2.png)
 
 
-### What It Takes To Dream: Linear Layer Only?
+### What It Takes To Dream: Not Just The Linear Layer
 
 I also wanted to explore whether model "finetuning" was necessary in order for dreaming to be possible. In transfer learning, a model (Inception_v4 in our case) is trained on some dataset (ImageNet), and then that pre-trained model is then trained further on data specific to a new application or task. During this second training phase, some of weights can be frozen for performance reasons. If this is the case, the non-frozen layers are the only part of the model that can adapt to the new task. I explored whether such a model can also be used to generate deep dream images.
+
+I found that the answer is no. At least for the Inception_v4 network for this specific bird classification problem, training only the fully connected layer is insufficient for bird-like output to appear via the deep dream process.
+
+Trained for 10 epochs, 500 dream steps:
+
+
+Trained for 20 epochs, 1000 dream steps:
+
+![output from frozen model with 20 bird epochs, 1000 dream steps](9-fc-only-20-1000-epochs/1.png)
+![output from frozen model with 20 bird epochs, 1000 dream steps](9-fc-only-20-1000-epochs/2.png)
+![output from frozen model with 20 bird epochs, 1000 dream steps](9-fc-only-20-1000-epochs/3.png)
+![output from frozen model with 20 bird epochs, 1000 dream steps](9-fc-only-20-1000-epochs/4.png)
