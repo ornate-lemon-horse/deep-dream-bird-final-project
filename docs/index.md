@@ -12,7 +12,7 @@ In this project, I sought out to explore how the "deep dream phenomena" arose an
 
 ## Problem Statement
 
-For this project, I posed the question of how deep dream behavior could be created and how this behavior would change with things like the progression of model training.
+For this project, I posed the question of how deep dream behavior could be created and how this behavior and the specific visuals generated would change with things like the progression of model training.
 
 ## Related Work
 
@@ -117,6 +117,10 @@ I found that the answer is no. At least for the Inception_v4 network for this sp
 
 Trained for 10 epochs, 500 dream steps:
 
+![output from frozen model with 10 bird epochs, 500 dream steps](8-fc-only-10-500-epochs/1.png)
+![output from frozen model with 10 bird epochs, 500 dream steps](8-fc-only-10-500-epochs/2.png)
+![output from frozen model with 10 bird epochs, 500 dream steps](8-fc-only-10-500-epochs/3.png)
+![output from frozen model with 10 bird epochs, 500 dream steps](8-fc-only-10-500-epochs/4.png)
 
 Trained for 20 epochs, 1000 dream steps:
 
@@ -124,3 +128,5 @@ Trained for 20 epochs, 1000 dream steps:
 ![output from frozen model with 20 bird epochs, 1000 dream steps](9-fc-only-20-1000-epochs/2.png)
 ![output from frozen model with 20 bird epochs, 1000 dream steps](9-fc-only-20-1000-epochs/3.png)
 ![output from frozen model with 20 bird epochs, 1000 dream steps](9-fc-only-20-1000-epochs/4.png)
+
+## In Conclusion
