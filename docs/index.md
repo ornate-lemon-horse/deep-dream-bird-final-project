@@ -4,7 +4,7 @@
 
 **Video Link:** [https://youtu.be/y9NAXnTmETo](https://youtu.be/y9NAXnTmETo)
 
-**Slides Link:** [Link](https://docs.google.com/presentation/d/e/2PACX-1vTfND-ol1-7Wh64Dvsin7vl2rxdnrr7XVyOfFmUAwJftXnefpcfqaHMztYjyWbSl-eA6eNK3ZyhvnLh/pub?start=false&loop=false&delayms=3000)
+**Slides Link:** [Link (PDF)](Deep_Learning_Final_Project_Slides.pdf)
 
 ## Abstract
 
